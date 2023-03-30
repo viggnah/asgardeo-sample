@@ -16,7 +16,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
 #    && chmod 0440 /etc/sudoers.d/$USERNAME
 USER root
 RUN chown -R $USERNAME /workspace/app
-USER $USERNAME
+USER $USERNAME $USER_UID
 
 COPY mvnw .
 COPY .mvn .mvn
