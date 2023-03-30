@@ -2,7 +2,7 @@ FROM eclipse-temurin:11 as build
 WORKDIR /workspace/app
 
 ARG USERNAME=pamod
-ARG USER_UID=1000
+ARG USER_UID=10004
 ARG USER_GID=$USER_UID
 
 # Create the user and apply permissions
