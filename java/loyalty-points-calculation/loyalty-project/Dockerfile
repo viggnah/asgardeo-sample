@@ -1,7 +1,7 @@
 FROM eclipse-temurin:11 as build
 WORKDIR /workspace/app
 
-ARG USERNAME=choreouser
+ARG USERNAME=loyaltyuser
 ARG USER_UID=10014
 ARG USER_GID=$USER_UID
 
@@ -15,7 +15,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 USER root
 RUN chown -R $USERNAME /workspace/app
-USER choreouser
+USER 10014
 
 COPY mvnw .
 COPY .mvn .mvn
