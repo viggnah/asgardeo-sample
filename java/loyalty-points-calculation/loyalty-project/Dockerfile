@@ -1,7 +1,7 @@
 FROM eclipse-temurin:11 as build
 WORKDIR /workspace/app
 
-ARG USERNAME=pamod
+ARG USERNAME=USER10004
 ARG USER_UID=10004
 ARG USER_GID=$USER_UID
 
