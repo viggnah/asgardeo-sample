@@ -16,9 +16,10 @@ RUN groupadd --gid $USER_GID $USERNAME \
 #    && apt-get install -y sudo \
 #    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
 #    && chmod 0440 /etc/sudoers.d/$USERNAME
-#USER root
+USER root
 RUN chown -R $USER_UID /workspace/app
-USER $USER_UID
+#USER $USER_UID
+USER 10004
 
 COPY mvnw .
 COPY .mvn .mvn
