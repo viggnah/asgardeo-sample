@@ -17,7 +17,7 @@ tags:
   - name: loyalty-point-controller
     description: Loyalty Point Controller
 paths:
-  /loyalty/*:
+  /loyalty:
     get:
       tags:
         - loyalty-point-controller

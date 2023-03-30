@@ -5,12 +5,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+
+@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/loyalty")
 public class LoyaltyPointController {
     Map<String, LoyaltyPoint> loyaltyPointRepository = new ConcurrentHashMap<>();
 
-    @PostMapping("/*")
+    @PostMapping()
     public String addPoints(@RequestBody LoyaltyPoint point) {
         String successMessage = "{ status: \"success\"}";
         LoyaltyPoint loyaltyPoints = loyaltyPointRepository.get(point.getName());
@@ -23,12 +25,12 @@ public class LoyaltyPointController {
         return successMessage;
     }
 
-    @GetMapping("/*")
+    @GetMapping()
     public LoyaltyPoint getPoints(@RequestParam String name) {
         return loyaltyPointRepository.get(name);
     }
 
-    @DeleteMapping("/*")
+    @DeleteMapping()
     public String deletePoints(@RequestParam String name) {
         String successMessage = "{ status: \"success\"}";
         loyaltyPointRepository.remove(name);
