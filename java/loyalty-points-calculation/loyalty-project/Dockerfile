@@ -1,5 +1,4 @@
 FROM eclipse-temurin:11 as build
-WORKDIR /workspace/app
 
 ARG USERNAME=loyaltyuser
 ARG USER_UID=10014
@@ -13,9 +12,9 @@ RUN groupadd --gid $USER_GID $USERNAME \
 #    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
 #    && chmod 0440 /etc/sudoers.d/$USERNAME \
 
-USER root
-RUN chown -R $USERNAME /workspace/app
+RUN mkdir -p /workspace/app && chown -R $USERNAME /workspace/app && cd /workspace/app
 USER 10014
+WORKDIR /workspace/app
 
 COPY mvnw .
 COPY .mvn .mvn
@@ -32,4 +31,4 @@ COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 ENTRYPOINT ["java","-cp","app:app/lib/*","org.wso2.demo.Main"]
-#EXPOSE 8080
+EXPOSE 8080
