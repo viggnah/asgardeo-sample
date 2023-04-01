@@ -1,132 +1,91 @@
-swagger: '2.0'
+openapi: 3.0.1
 info:
-  description: Calculate Loyalty Points for Given User
-  version: Version 1.0
   title: Loyalty Points API
-  termsOfService: https://wso2.com/terms
-  contact:
-    name: Pamod Sylvester
-    url: https://www.wso2.com
-    email: pamod@wso2.com
+  description: Calculate Loyalty Points for Given User
   license:
     name: Apache 2.0
-    url: https://wso2.com/license
-host: localhost:8080
-basePath: /
-tags:
-  - name: loyalty-point-controller
-    description: Loyalty Point Controller
+    url: http://loyalty.org
+  version: v0.0.1
+externalDocs:
+  description: Loyalty Wiki Documentation
+  url: https://loyalty.wiki.github.org/docs
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
 paths:
   /loyalty:
     get:
       tags:
         - loyalty-point-controller
-      summary: getPoints
-      operationId: getPointsUsingGET
-      produces:
-        - '*/*'
+      operationId: getPoints
       parameters:
         - name: name
           in: query
-          description: name
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/LoyaltyPoint'
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-        '404':
-          description: Not Found
-      deprecated: false
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/LoyaltyPoint'
     post:
       tags:
         - loyalty-point-controller
-      summary: addPoints
-      operationId: addPointsUsingPOST
-      consumes:
-        - application/json
-      produces:
-        - '*/*'
-      parameters:
-        - in: body
-          name: point
-          description: point
-          required: true
-          schema:
-            $ref: '#/definitions/LoyaltyPoint'
+      operationId: addPoints
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoyaltyPoint'
+        required: true
       responses:
         '200':
           description: OK
-          schema:
-            type: string
-        '201':
-          description: Created
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-        '404':
-          description: Not Found
-      deprecated: false
+          content:
+            '*/*':
+              schema:
+                type: string
     delete:
       tags:
         - loyalty-point-controller
-      summary: deletePoints
-      operationId: deletePointsUsingDELETE
-      produces:
-        - '*/*'
+      operationId: deletePoints
       parameters:
         - name: name
           in: query
-          description: name
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            type: string
-        '204':
-          description: No Content
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-      deprecated: false
+          content:
+            '*/*':
+              schema:
+                type: string
   /loyalty/all:
     get:
       tags:
         - loyalty-point-controller
-      summary: getAllPoints
-      operationId: getAllPointsUsingGET
-      produces:
-        - '*/*'
+      operationId: getAllPoints
       responses:
         '200':
           description: OK
-          schema:
-            type: object
-            additionalProperties:
-              $ref: '#/definitions/LoyaltyPoint'
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-        '404':
-          description: Not Found
-      deprecated: false
-definitions:
-  LoyaltyPoint:
-    type: object
-    properties:
-      nPoints:
-        type: integer
-        format: int32
-      name:
-        type: string
-    title: LoyaltyPoint
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/LoyaltyPoint'
+components:
+  schemas:
+    LoyaltyPoint:
+      type: object
+      properties:
+        name:
+          type: string
+        getnPoints:
+          type: integer
+          format: int32
