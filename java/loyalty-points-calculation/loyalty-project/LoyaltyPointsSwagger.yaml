@@ -86,6 +86,6 @@ components:
       properties:
         name:
           type: string
-        getnPoints:
+        totalNumberOfPoints:
           type: integer
           format: int32

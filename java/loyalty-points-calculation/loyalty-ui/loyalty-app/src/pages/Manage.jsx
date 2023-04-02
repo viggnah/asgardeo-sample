@@ -80,7 +80,7 @@ const Manage = () => {
                                                     return (
                                                         <tr key={index}>
                                                             <td>{user[1].name}</td>
-                                                            <td>{user[1].nPoints}</td>
+                                                            <td>{user[1].totalNumberOfPoints}</td>
                                                         </tr>
                                                     )
                                                 }

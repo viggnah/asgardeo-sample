@@ -8,7 +8,6 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 RUN mkdir -p /workspace/app && chown -R $USERNAME /workspace/app && cd /workspace/app
-#USER 10014
 WORKDIR /workspace/app
 
 COPY mvnw .

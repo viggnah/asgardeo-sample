@@ -19,7 +19,8 @@ public class LoyaltyPointController {
         if (null == loyaltyPoints) {
             loyaltyPointRepository.put(point.getName(), point);
         } else {
-            loyaltyPoints.setnPoints(loyaltyPoints.getnPoints() + point.getnPoints());
+            loyaltyPoints.setTotalNumberOfPoints(loyaltyPoints.getTotalNumberOfPoints() +
+                    point.getTotalNumberOfPoints());
             loyaltyPointRepository.put(point.getName(), loyaltyPoints);
         }
         return successMessage;

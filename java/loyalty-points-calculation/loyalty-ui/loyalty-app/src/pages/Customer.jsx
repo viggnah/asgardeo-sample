@@ -9,7 +9,7 @@ const Customer = () => {
 
     useEffect(() => {
         axios.get('http://localhost:8080/loyalty', { params: { name: userName } }).then(res => {
-            setPoints(res.data.nPoints);
+            setPoints(res.data.totalNumberOfPoints);
         });
     });
 
