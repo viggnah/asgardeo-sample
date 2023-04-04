@@ -2,6 +2,7 @@ import { Col, Container, Form, Row, Button, Table, Alert } from "react-bootstrap
 import planetimage from '../images/manage-img.jpeg';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Hosts } from "../constants/links";
 
 const Manage = () => {
 
@@ -10,17 +11,24 @@ const Manage = () => {
     const [points, setPoints] = useState(0);
     const [loyaltyAdditionSuccess, setLoyaltyAdditionSuccess] = useState(false);
     const [allUsers, setAllUsers] = useState([]);
+    const HOST = Hosts.Loyalty;
 
     useEffect(() => {
-        axios.get('http://localhost:8080/loyalty/all').then((responseData) => {
+        const authorizationHeader = {
+            headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
+        };
+        axios.get(HOST + "/loyalty/all", {}, authorizationHeader).then((responseData) => {
             let responseEntries = Object.entries(responseData.data);
             setAllUsers(responseEntries);
         });
-    }, [submittedCustomerId]);
+    }, [submittedCustomerId, HOST]);
 
     async function submitPoints(event) {
-        let data = { "name": customerId, "nPoints": points };
-        const result = await axios.post('http://localhost:8080/loyalty', data);
+        const authorizationHeader = {
+            headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
+        };
+        let data = { "name": customerId, "totalNumberOfPoints": points };
+        const result = await axios.post(HOST + "/loyalty", data, authorizationHeader);
 
         try {
             if (result.status === 200) {
@@ -100,7 +108,7 @@ const Manage = () => {
                 <Col>
                     <Container>
                         <Row>
-                            <img src={planetimage} style={{ opacity: 0.8 }} width="100%" height="100%" />
+                            <img src={planetimage} alt="Loading" style={{ opacity: 0.8 }} width="100%" height="100%" />
                         </Row>
                     </Container>
                 </Col>

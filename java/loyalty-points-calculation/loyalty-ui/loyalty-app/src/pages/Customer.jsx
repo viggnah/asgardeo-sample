@@ -1,14 +1,20 @@
 import axios from "axios";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import { Hosts } from "../constants/links";
 
 const Customer = () => {
 
     const [points, setPoints] = useState(0);
-    let userName = "pamod"
+    let userName = localStorage.getItem('userName');
+    const HOST = Hosts.Loyalty;
+
+    const authorizationHeader = {
+        headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
+    };
 
     useEffect(() => {
-        axios.get('http://localhost:8080/loyalty', { params: { name: userName } }).then(res => {
+        axios.get(HOST + "/loyalty", { params: { name: userName }, authorizationHeader }).then(res => {
             setPoints(res.data.totalNumberOfPoints);
         });
     });
