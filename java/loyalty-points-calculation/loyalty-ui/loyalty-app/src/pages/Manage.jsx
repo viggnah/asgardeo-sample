@@ -17,7 +17,7 @@ const Manage = () => {
         const authorizationHeader = {
             headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
         };
-        axios.get(HOST + "/loyalty/all", {}, authorizationHeader).then((responseData) => {
+        axios.get(HOST + "/loyalty/all", authorizationHeader).then((responseData) => {
             let responseEntries = Object.entries(responseData.data);
             setAllUsers(responseEntries);
         });

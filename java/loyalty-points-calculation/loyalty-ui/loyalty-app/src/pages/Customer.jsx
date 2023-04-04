@@ -9,12 +9,13 @@ const Customer = () => {
     let userName = localStorage.getItem('userName');
     const HOST = Hosts.Loyalty;
 
-    const authorizationHeader = {
-        headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
+    const headers = {
+        headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` },
+        params: { name: userName }
     };
 
     useEffect(() => {
-        axios.get(HOST + "/loyalty", { params: { name: userName }, authorizationHeader }).then(res => {
+        axios.get(HOST + "/loyalty", headers).then(res => {
             setPoints(res.data.totalNumberOfPoints);
         });
     });
