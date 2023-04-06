@@ -65,15 +65,28 @@ This can be a long list of things to do. And this is just for one service. Let's
 There's a platform which can do all the work for you. 
 
 1. Login to [WSO2 App Development Platform](https://console.choreo.dev/login?profile=idevp). 
-2. Create a service under your organization/project
-[create_service_1.png](enterurl)
+2. Create a service under your organization/project. \
+![create_service_1.png](https://github.com/pamod/choreo-dev/blob/v1.0/java/loyalty-points-calculation/images/create_service_1.png)
 3. Provide your github repo details and click on create. If you cloned the repo mentioned above, 
-you can use the below details.
-[githubdetails_2.png](enterurl)
+you can use the below details. \
+![githubdetails_2.png](https://github.com/pamod/choreo-dev/blob/v1.0/java/loyalty-points-calculation/images/githubdetails_2.png)
 
 *Dockerfile Path*: ````java/loyalty-points-calculation/loyalty-project/Dockerfile```` \
 *Docker Context Path* : ````java/loyalty-points-calculation/loyalty-project````
 
 Also notice; all the preproduction environments are now mimicked graphically. Choreo has defined the CI/CD pipelines, 
-handled the complexity of container deployment, configuration and created multiple preproduction environments.
-[environments.png](enterurl)
+handled the complexity of container deployment, configuration and created multiple preproduction environments. \
+![githubdetails_3.png](https://github.com/pamod/choreo-dev/blob/v1.0/java/loyalty-points-calculation/images/environments_3.png)
+4. User will also get the option to deploy the service in any given environment graphically.
+Once deployed it can be tested using the test console, prior to publishing. \
+![testing_4.png](https://github.com/pamod/choreo-dev/blob/v1.0/java/loyalty-points-calculation/images/testing_4.png)
+5. By clicking on the manage button, viola you'll notice options to manage the service. 
+We'll talk about options shortly. Let's maybe start by publishing the service as "pre-release" 
+(available under manage-> lifecycle) \
+![lifecycle_5.png](https://github.com/pamod/choreo-dev/blob/v1.0/java/loyalty-points-calculation/images/lifecycle_5.png)
+6. Published API can be viewed under developer portal, which is provided by WSO2 App Development Platform.
+Notice the LoyaltyService is available for consumption in the portal. \
+![devportal_6.png](https://github.com/pamod/choreo-dev/blob/v1.0/java/loyalty-points-calculation/images/devportal_6.png)
+7. Using the try-it tool or any REST client the relevant Loyalty Service could be accessed. 
+Notice the service is now secured and could only be accessed via providing token. 
+The security policies were enforced by WSO2 App Development Platform.
