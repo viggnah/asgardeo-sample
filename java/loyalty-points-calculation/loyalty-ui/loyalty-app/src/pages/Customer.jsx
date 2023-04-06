@@ -25,7 +25,7 @@ const Customer = () => {
         <Container className="mt-5">
             <Row >
                 <Col>
-                    You Currntly Have {points} Points to Reedeem !
+                    You Currently Have {points} Points to Redeem !
                 </Col>
             </Row>
             <Row className="mt-5" >
