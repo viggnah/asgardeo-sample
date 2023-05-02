@@ -16,20 +16,17 @@ public class SwaggerConfig {
     @Bean
     public GroupedOpenApi api() {
         return GroupedOpenApi.builder()
-                .group("loyalty-public")
-                .pathsToMatch("/loyalty/**")
+                .group("item-public")
+                .pathsToMatch("/items/**")
                 .build();
     }
 
     @Bean
     public OpenAPI apiInfo() {
         return new OpenAPI()
-                .info(new Info().title("Loyalty Points API")
-                        .description("Calculate Loyalty Points for Given User")
-                        .version("v0.0.1")
-                        .license(new License().name("Apache 2.0").url("http://loyalty.org")))
-                .externalDocs(new ExternalDocumentation()
-                        .description("Loyalty Wiki Documentation")
-                        .url("https://loyalty.wiki.github.org/docs"));
+                .info(new Info().title("Stock Items API")
+                        .description("Handles all stock items related operations")
+                        .version("v1.0.0")
+                        .license(new License().name("Apache 2.0").url("http://loyalty.org")));
     }
 }

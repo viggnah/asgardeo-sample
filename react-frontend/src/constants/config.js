@@ -9,5 +9,5 @@ export const AsgardeoConfig = {
 
 //Loyalty Service Host and Port
 export const Hosts = {
-   Loyalty: "http://localhost:8080"
+   host: "http://localhost:8080"
 };
