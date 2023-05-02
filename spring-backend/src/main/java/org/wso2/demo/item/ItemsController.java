@@ -1,4 +1,4 @@
-package org.wso2.demo.loyalty;
+package org.wso2.demo.item;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -10,13 +10,14 @@ import java.util.concurrent.ConcurrentHashMap;
 @RestController
 @RequestMapping("/items")
 public class ItemsController {
+
     Map<String, Item> itemRepository = new ConcurrentHashMap<>(
         Map.of(
-            "Dates", new Item("Dates", 9.99f),
-            "Milk", new Item("Milk", 5.49f),
-            "Bread", new Item("Bread", 2.02f),
-            "Eggs", new Item("Eggs", 0.52f),
-            "Butter", new Item("Butter", 4.51f)
+            "Dates", new Item("Dates", 3.99),
+            "Milk", new Item("Milk", 5.49),
+            "Bread", new Item("Bread", 2.02),
+            "Eggs", new Item("Eggs", 0.52),
+            "Butter", new Item("Butter", 4.51)
         )
     );
 

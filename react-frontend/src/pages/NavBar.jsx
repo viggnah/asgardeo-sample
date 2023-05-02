@@ -2,47 +2,47 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-// import { useAuthContext } from "@asgardeo/auth-react";
+import { useAuthContext } from "@asgardeo/auth-react";
 import { useState } from 'react';
 
 const LoginStatusBar = props => {
-    // const { state, signIn, signOut, getDecodedIDToken, getAccessToken } = useAuthContext();
+    const { state, signIn, signOut, getDecodedIDToken, getAccessToken } = useAuthContext();
     let authenticated = localStorage.getItem('authenticated');
 
-    // const decodedToken = async () => {
-    //     if (state.isAuthenticated === true) {
-    //         let token = await getDecodedIDToken();
-    //         props.setDecodedToken(token);
-    //         localStorage.setItem('decodedId', token);
-    //     }
-    // };
+    const decodedToken = async () => {
+        if (state.isAuthenticated === true) {
+            let token = await getDecodedIDToken();
+            props.setDecodedToken(token);
+            localStorage.setItem('decodedId', token);
+        }
+    };
 
-    // const accessToken = async () => {
-    //     if (state.isAuthenticated === true) {
-    //         let token = await getAccessToken();
-    //         localStorage.setItem('accessToken', token);
-    //     }
-    // };
+    const accessToken = async () => {
+        if (state.isAuthenticated === true) {
+            let token = await getAccessToken();
+            localStorage.setItem('accessToken', token);
+        }
+    };
 
-    if (authenticated != null) {
-        // || state.isAuthenticated === true) {
-        // if (authenticated == null) {
-        //     localStorage.setItem('authenticated', true);
-        //     localStorage.setItem('userName', state.username);
-        //     decodedToken();
-        //     accessToken();
-        // }
+    if (authenticated != null
+        || state.isAuthenticated === true) {
+        if (authenticated == null) {
+            localStorage.setItem('authenticated', true);
+            localStorage.setItem('userName', state.username);
+            decodedToken();
+            accessToken();
+        }
         return (
             <div>
                 <Navbar.Text>
                     {localStorage.getItem('userName')}
                 </Navbar.Text>
-                {/* <Nav.Link onClick={() => logout(signOut)}>Logout</Nav.Link> */}
+                <Nav.Link onClick={() => logout(signOut)}>Logout</Nav.Link>
             </div>
         );
     } else {
-        return <></>
-        // return <Nav.Link onClick={() => signIn()}>Login</Nav.Link>
+        // return <></>
+        return <Nav.Link onClick={() => signIn()}>Login</Nav.Link>
     }
 }
 
@@ -50,6 +50,7 @@ const logout = signOut => {
     localStorage.removeItem('authenticated');
     localStorage.removeItem('userName');
     localStorage.removeItem('decodedId');
+    localStorage.removeItem('accessToken');
     signOut();
 };
 

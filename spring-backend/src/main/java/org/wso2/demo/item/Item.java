@@ -1,10 +1,10 @@
-package org.wso2.demo.loyalty;
+package org.wso2.demo.item;
 
 public class Item {
     String name;
-    Float price;
+    double price;
 
-    public Item(String name, Float price) {
+    public Item(String name, double price) {
         this.name = name;
         this.price = price;
     }
@@ -17,11 +17,11 @@ public class Item {
         this.name = name;
     }
 
-    public Float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }
