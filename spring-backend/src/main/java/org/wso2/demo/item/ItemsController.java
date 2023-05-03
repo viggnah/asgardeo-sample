@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-@CrossOrigin(maxAge = 3600)
+@CrossOrigin(origins = {"${app.security.cors.origin}"})
 @RestController
 @RequestMapping("/items")
 public class ItemsController {

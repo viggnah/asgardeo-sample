@@ -26,7 +26,6 @@ public class SwaggerConfig {
         return new OpenAPI()
                 .info(new Info().title("Stock Items API")
                         .description("Handles all stock items related operations")
-                        .version("v1.0.0")
-                        .license(new License().name("Apache 2.0").url("http://loyalty.org")));
+                        .version("v1.0.0"));
     }
 }

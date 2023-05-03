@@ -4,14 +4,13 @@ import { useEffect, useState } from "react";
 import { Hosts } from "../constants/config";
 
 const Items = () => {
+    const [fetchData, setFetchData] = useState(true);
 
     const [items, setItems] = useState([]);
-    let userName = localStorage.getItem('userName');
     const HOST = Hosts.host;
 
     const headers = {
-        headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` },
-        params: { name: userName }
+        headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
     };
 
     useEffect(() => {
@@ -19,7 +18,8 @@ const Items = () => {
             let responseEntries = Object.entries(responseData.data);
             setItems(responseEntries);
         });
-    });
+        setFetchData(false);
+    }, [fetchData]);
 
 
     return (
@@ -31,7 +31,7 @@ const Items = () => {
                             <tr>
                                 <th>Item</th>
                                 <th>Price</th>
-                                <th>#</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>

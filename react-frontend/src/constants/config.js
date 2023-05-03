@@ -7,7 +7,7 @@ export const AsgardeoConfig = {
     scope: ["openid", "groups", "profile"]
 };
 
-//Loyalty Service Host and Port
+// Service Host and Port
 export const Hosts = {
    host: "http://localhost:8080"
 };

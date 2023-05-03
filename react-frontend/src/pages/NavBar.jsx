@@ -20,6 +20,7 @@ const LoginStatusBar = props => {
     const accessToken = async () => {
         if (state.isAuthenticated === true) {
             let token = await getAccessToken();
+            console.log("Access Token: " + token);
             localStorage.setItem('accessToken', token);
         }
     };
