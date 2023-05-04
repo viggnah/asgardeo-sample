@@ -2,9 +2,9 @@
 export const AsgardeoConfig = {
     signInRedirectURL: "http://localhost:3000",
     signOutRedirectURL: "http://localhost:3000",
-    clientID:"UOTfBG1Aq21CmcvfTvfsN4DATdMa",
-    baseUrl: "https://api.asgardeo.io/t/viggnah",
-    scope: ["openid", "groups", "profile"]
+    clientID:"",
+    baseUrl: "",
+    scope: ["openid", "profile"]
 };
 
 // Service Host and Port
